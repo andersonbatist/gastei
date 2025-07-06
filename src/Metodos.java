@@ -1,8 +1,11 @@
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Font;
+import java.awt.GridLayout;
+import java.awt.Color;
 import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
+import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.SwingConstants;
@@ -17,6 +20,7 @@ public class Metodos{
     static JFrame abertura;
 
     public static void mostrarTelaAbertura () {
+
         JFrame abertura = new JFrame("ABRINDO A APLICAÇÃO");
         abertura.setTitle("Seja Bem-Vindo");
         abertura.getContentPane().setBackground(Color.BLACK);
@@ -51,7 +55,6 @@ public class Metodos{
         painelGif.setBorder(BorderFactory.createEmptyBorder(0, 50, 500, 0));
         painelGif.add(gifLabel, BorderLayout.CENTER);
 
-        abertura.add(painelTitulo, BorderLayout.NORTH);
         abertura.add(painelGif, BorderLayout.CENTER);
 
         abertura.setVisible(true);
@@ -61,7 +64,53 @@ public class Metodos{
             @Override
             public void actionPerformed(ActionEvent e){
                 abertura.dispose();
+                mostrarTelaInicial();
+                ((Timer) e.getSource()).stop(); 
             }
         }).start();
+    }
+
+    public static void mostrarTelaInicial() {
+
+        JButton botaoLogin = new JButton ("Fazer Login");
+        JButton botaoRegistro = new JButton ("Fazer Registro");
+
+        JFrame telaInicial = new JFrame();
+        telaInicial.setTitle("GASTEI");
+        telaInicial.getContentPane().setBackground(Color.BLACK);
+        telaInicial.setSize(1000,1000);
+        telaInicial.setLocationRelativeTo(null);
+        telaInicial.setResizable(true);
+        telaInicial.setLayout(new BorderLayout());
+
+
+        //BOTÕES 
+
+        botaoLogin.setFont(new Font("Serif", Font.BOLD, 25));
+        botaoLogin.setBackground(new Color(65,17,74));
+        botaoLogin.setForeground(Color.WHITE);
+        botaoLogin.setBorderPainted(false);
+        botaoLogin.setFocusPainted(false);
+
+        botaoRegistro.setFont(new Font("Serif", Font.BOLD, 25));
+        botaoRegistro.setFont(new Font("Serif", Font.BOLD, 25));
+        botaoRegistro.setBackground(new Color(65,17,74));
+        botaoRegistro.setForeground(Color.WHITE);
+        botaoRegistro.setBorderPainted(false);
+        botaoRegistro.setFocusPainted(false);
+
+        //BOTÕES
+
+        JPanel painelBotoes = new JPanel();
+        painelBotoes.add(botaoLogin);
+        painelBotoes.add(botaoRegistro);
+        painelBotoes.setBackground(Color.BLACK);
+
+        painelBotoes.setLayout(new GridLayout(2,1,1,10));
+        painelBotoes.setBorder(BorderFactory.createEmptyBorder(500, 300, 200, 300));
+
+
+        telaInicial.add(painelBotoes, BorderLayout.CENTER);
+        telaInicial.setVisible(true);
     }
 }
