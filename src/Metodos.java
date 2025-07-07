@@ -37,7 +37,7 @@ public class Metodos{
         titulo.setHorizontalAlignment(SwingConstants.CENTER);
 
         JPanel painelTitulo = new JPanel(new BorderLayout());
-        painelTitulo.setBackground(Color.BLACK);
+        painelTitulo.setBackground(Color.black);
         painelTitulo.setBorder(BorderFactory.createEmptyBorder(150,0,0,0));
 
 
@@ -72,9 +72,6 @@ public class Metodos{
 
     public static void mostrarTelaInicial() {
 
-        JButton botaoLogin = new JButton ("Fazer Login");
-        JButton botaoRegistro = new JButton ("Fazer Registro");
-
         JFrame telaInicial = new JFrame();
         telaInicial.setTitle("GASTEI");
         telaInicial.getContentPane().setBackground(Color.BLACK);
@@ -84,7 +81,32 @@ public class Metodos{
         telaInicial.setLayout(new BorderLayout());
 
 
-        //BOTÕES 
+
+
+        JLabel titulo = new JLabel("GASTEI");
+        titulo.setForeground(Color.WHITE);
+        titulo.setFont(new Font("Serif", Font.BOLD, 69));
+        titulo.setHorizontalAlignment(SwingConstants.CENTER);
+
+        JPanel painelTitulo = new JPanel(new BorderLayout());
+        painelTitulo.setBackground(Color.black);
+        painelTitulo.setBorder(BorderFactory.createEmptyBorder(150,0,0,0));
+        painelTitulo.add(titulo, BorderLayout.CENTER);
+
+
+
+
+        JButton botaoLogin = new JButton ("Fazer Login");
+        JButton botaoRegistro = new JButton ("Fazer Registro");
+
+        JPanel painelBotoes = new JPanel();
+        painelBotoes.add(botaoLogin);
+        painelBotoes.add(botaoRegistro);
+        painelBotoes.setBackground(Color.BLACK);
+
+        painelBotoes.setLayout(new GridLayout(2,1,1,30));
+        painelBotoes.setBorder(BorderFactory.createEmptyBorder(50, 300, 500, 300));
+
 
         botaoLogin.setFont(new Font("Serif", Font.BOLD, 25));
         botaoLogin.setBackground(new Color(65,17,74));
@@ -101,15 +123,10 @@ public class Metodos{
 
         //BOTÕES
 
-        JPanel painelBotoes = new JPanel();
-        painelBotoes.add(botaoLogin);
-        painelBotoes.add(botaoRegistro);
-        painelBotoes.setBackground(Color.BLACK);
+        
 
-        painelBotoes.setLayout(new GridLayout(2,1,1,10));
-        painelBotoes.setBorder(BorderFactory.createEmptyBorder(500, 300, 200, 300));
-
-
+        
+        telaInicial.add(painelTitulo, BorderLayout.NORTH);
         telaInicial.add(painelBotoes, BorderLayout.CENTER);
         telaInicial.setVisible(true);
     }
