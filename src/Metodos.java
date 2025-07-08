@@ -14,12 +14,16 @@ import javax.swing.Timer;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
+//Método pra gerar a janela de abertura:
+
 
 public class Metodos{
 
     static JFrame abertura;
 
     public static void mostrarTelaAbertura () {
+
+        //Gerando a janela:
 
         JFrame abertura = new JFrame("ABRINDO A APLICAÇÃO");
         abertura.setTitle("Seja Bem-Vindo");
@@ -29,12 +33,14 @@ public class Metodos{
         abertura.setResizable(true);
         abertura.setLayout(new BorderLayout());
 
-
+        //Criando o título:
 
         JLabel titulo = new JLabel("GASTEI");
         titulo.setForeground(Color.WHITE);
         titulo.setFont(new Font("Serif", Font.BOLD, 69));
         titulo.setHorizontalAlignment(SwingConstants.CENTER);
+
+        //Adicionando o título:
 
         JPanel painelTitulo = new JPanel(new BorderLayout());
         painelTitulo.setBackground(Color.black);
@@ -43,6 +49,8 @@ public class Metodos{
 
         painelTitulo.add(titulo, BorderLayout.CENTER);
         abertura.add(painelTitulo, BorderLayout.NORTH);
+
+        //Adicionando o Gif:
 
         ImageIcon gifLoading = new ImageIcon("gif.gif");
 
@@ -57,7 +65,7 @@ public class Metodos{
 
         abertura.add(painelGif, BorderLayout.CENTER);
 
-        abertura.setVisible(true);
+        //Adicionando um tim pra fechar a janela de abertura e iniciar a janela inicial:
 
         int delay = 3000;
         new Timer(delay, new ActionListener() {
@@ -68,9 +76,15 @@ public class Metodos{
                 ((Timer) e.getSource()).stop(); 
             }
         }).start();
+
+         abertura.setVisible(true);
     }
 
+//Método pra gerar a janela inicial(Área de login/registro:)
+
     public static void mostrarTelaInicial() {
+
+        //Criando a janela:
 
         JFrame telaInicial = new JFrame();
         telaInicial.setTitle("GASTEI");
@@ -80,21 +94,21 @@ public class Metodos{
         telaInicial.setResizable(true);
         telaInicial.setLayout(new BorderLayout());
 
-
-
+        //Criando novamente o título:
 
         JLabel titulo = new JLabel("GASTEI");
         titulo.setForeground(Color.WHITE);
         titulo.setFont(new Font("Serif", Font.BOLD, 69));
         titulo.setHorizontalAlignment(SwingConstants.CENTER);
 
+        //Adicionando novamente o título:
+
         JPanel painelTitulo = new JPanel(new BorderLayout());
         painelTitulo.setBackground(Color.black);
         painelTitulo.setBorder(BorderFactory.createEmptyBorder(150,0,0,0));
         painelTitulo.add(titulo, BorderLayout.CENTER);
 
-
-
+        //Criando e ajustando os botões de login/registro:
 
         JButton botaoLogin = new JButton ("Fazer Login");
         JButton botaoRegistro = new JButton ("Fazer Registro");
@@ -120,11 +134,6 @@ public class Metodos{
         botaoRegistro.setForeground(Color.WHITE);
         botaoRegistro.setBorderPainted(false);
         botaoRegistro.setFocusPainted(false);
-
-        //BOTÕES
-
-        
-
         
         telaInicial.add(painelTitulo, BorderLayout.NORTH);
         telaInicial.add(painelBotoes, BorderLayout.CENTER);
