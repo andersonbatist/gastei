@@ -3,16 +3,23 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.GridLayout;
 import java.awt.Color;
+import java.awt.Component;
 import javax.swing.BorderFactory;
+import javax.swing.Box;
+import javax.swing.BoxLayout;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
+import javax.swing.JDialog;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.SwingConstants;
 import javax.swing.JPanel;
 import javax.swing.Timer;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.awt.Dimension;
+
 
 //Método pra gerar a janela de abertura:
 
@@ -32,10 +39,12 @@ public class Metodos{
         abertura.setLocationRelativeTo(null);
         abertura.setResizable(true);
         abertura.setLayout(new BorderLayout());
+        abertura.setResizable(false);
+
 
         //Criando o título:
 
-        JLabel titulo = new JLabel("GASTEI");
+        JLabel titulo = new JLabel("Bem-Vindo");
         titulo.setForeground(Color.WHITE);
         titulo.setFont(new Font("Serif", Font.BOLD, 69));
         titulo.setHorizontalAlignment(SwingConstants.CENTER);
@@ -87,12 +96,14 @@ public class Metodos{
         //Criando a janela:
 
         JFrame telaInicial = new JFrame();
-        telaInicial.setTitle("GASTEI");
+        telaInicial.setTitle("Bem-Vindo");
         telaInicial.getContentPane().setBackground(Color.BLACK);
         telaInicial.setSize(1000,1000);
         telaInicial.setLocationRelativeTo(null);
         telaInicial.setResizable(true);
         telaInicial.setLayout(new BorderLayout());
+        telaInicial.setResizable(false);
+
 
         //Criando novamente o título:
 
@@ -108,17 +119,33 @@ public class Metodos{
         painelTitulo.setBorder(BorderFactory.createEmptyBorder(150,0,0,0));
         painelTitulo.add(titulo, BorderLayout.CENTER);
 
-        //Criando e ajustando os botões de login/registro:
+        //Criando e ajustando os botões
 
-        JButton botaoLogin = new JButton ("Fazer Login");
-        JButton botaoRegistro = new JButton ("Fazer Registro");
+        BotaoArredondado botaoLogin = new BotaoArredondado ("Fazer Login");
+        BotaoArredondado botaoRegistro = new BotaoArredondado ("Fazer Registro");
+        BotaoIconeRedondo botaoGoogle = new BotaoIconeRedondo("googleIcon.png");
+
+        Dimension tamanhoBotoesGrandes = new Dimension(300,60);
+
+        botaoGoogle.setPreferredSize(new Dimension(40, 40));
+        botaoGoogle.setMaximumSize(new Dimension(50, 50));
+        botaoGoogle.setMinimumSize(new Dimension(50, 50));
+
+        botaoLogin.setAlignmentX(Component.CENTER_ALIGNMENT);
+        botaoRegistro.setAlignmentX(Component.CENTER_ALIGNMENT);
+        botaoGoogle.setAlignmentX(Component.CENTER_ALIGNMENT);
+
 
         JPanel painelBotoes = new JPanel();
         painelBotoes.add(botaoLogin);
+        painelBotoes.add(Box.createRigidArea(new Dimension(0, 20)));
         painelBotoes.add(botaoRegistro);
+        painelBotoes.add(Box.createRigidArea(new Dimension(0, 5)));
+        painelBotoes.add(botaoGoogle);
+        painelBotoes.add(Box.createRigidArea(new Dimension(0, 300)));
         painelBotoes.setBackground(Color.BLACK);
 
-        painelBotoes.setLayout(new GridLayout(2,1,1,30));
+        painelBotoes.setLayout(new BoxLayout(painelBotoes, BoxLayout.Y_AXIS));
         painelBotoes.setBorder(BorderFactory.createEmptyBorder(50, 300, 500, 300));
 
 
@@ -127,6 +154,9 @@ public class Metodos{
         botaoLogin.setForeground(Color.WHITE);
         botaoLogin.setBorderPainted(false);
         botaoLogin.setFocusPainted(false);
+        botaoLogin.setPreferredSize(tamanhoBotoesGrandes);
+        botaoLogin.setMaximumSize(tamanhoBotoesGrandes);
+        botaoLogin.setMinimumSize(tamanhoBotoesGrandes);
 
         botaoRegistro.setFont(new Font("Serif", Font.BOLD, 25));
         botaoRegistro.setFont(new Font("Serif", Font.BOLD, 25));
@@ -134,9 +164,28 @@ public class Metodos{
         botaoRegistro.setForeground(Color.WHITE);
         botaoRegistro.setBorderPainted(false);
         botaoRegistro.setFocusPainted(false);
-        
+        botaoRegistro.setPreferredSize(tamanhoBotoesGrandes);
+        botaoRegistro.setMaximumSize(tamanhoBotoesGrandes);
+        botaoRegistro.setMinimumSize(tamanhoBotoesGrandes);
+
         telaInicial.add(painelTitulo, BorderLayout.NORTH);
         telaInicial.add(painelBotoes, BorderLayout.CENTER);
+
+        painelBotoes.add(Box.createRigidArea(new Dimension(0, 30)));
+        painelBotoes.add(botaoGoogle);
+        botaoGoogle.setAlignmentX(Component.CENTER_ALIGNMENT);
+
+
+
         telaInicial.setVisible(true);
+
+        botaoGoogle.addActionListener(e -> {
+
+            JOptionPane optionPane = new JOptionPane("Em breve ;)", JOptionPane.INFORMATION_MESSAGE);
+            JDialog dialog = optionPane.createDialog("Fazer login com o Google");
+            dialog.setSize(300,150);
+            dialog.setLocationRelativeTo(null);
+            dialog.setVisible(true);
+        });
     }
 }
