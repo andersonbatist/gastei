@@ -48,7 +48,7 @@ public class DadosCadastro {
         if (email != null && email.contains("@") && email.matches("^[\\w.-]+@[\\w.-]+\\.\\w{2,}$") && email.length() >= 8 && email.length() <= 50) {
             this.email = email;
         } else {
-            JOptionPane.showMessageDialog(null, "Em breve ;)", email, JOptionPane.WARNING_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Digite um email válido", email, JOptionPane.WARNING_MESSAGE);
         }
         this.email = email;
     }
