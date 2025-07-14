@@ -34,6 +34,7 @@ public class DadosCadastro {
     }
 
     //Setters
+    // Apenas dois itens estão com as validações aplicadas. Em breve vou fazer o resto
 
     public void setNome(String nome) {
         this.nome = nome;
@@ -42,15 +43,19 @@ public class DadosCadastro {
         this.sobrenome = sobrenome;
     }
     public void setApelido(String apelido) {
-        this.apelido = apelido;
+        if (apelido != null && apelido.length() >= 5 && apelido.length() <= 12 && apelido.matches("^[A-Za-zÀ-ÿ]+$")) {
+            String apelidoFormatado = apelido.substring(0, 1).toUpperCase() + apelido.substring(1).toLowerCase();
+        this.apelido = apelidoFormatado;
+        } else {
+            throw new IllegalArgumentException("Apelido inválido:");
+        }
     }
     public void setEmail(String email) {
         if (email != null && email.contains("@") && email.matches("^[\\w.-]+@[\\w.-]+\\.\\w{2,}$") && email.length() >= 8 && email.length() <= 50) {
             this.email = email;
         } else {
-            JOptionPane.showMessageDialog(null, "Digite um email válido", email, JOptionPane.WARNING_MESSAGE);
+            throw new IllegalArgumentException("Email inválido: verifique o tamanho e o formato.");
         }
-        this.email = email;
     }
     public void setSenha(String senha) {
         this.senha = senha;

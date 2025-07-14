@@ -14,11 +14,14 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.SwingConstants;
+import javax.swing.SwingUtilities;
 import javax.swing.JPanel;
 import javax.swing.Timer;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.awt.Dimension;
+import java.awt.Window;
+
 
 
 //Método pra gerar a janela de abertura:
@@ -176,8 +179,9 @@ public class Metodos{
         botaoGoogle.setAlignmentX(Component.CENTER_ALIGNMENT);
 
 
-
         telaInicial.setVisible(true);
+
+        //Adicionando funções aos botões
 
         botaoGoogle.addActionListener(e -> {
 
@@ -187,5 +191,37 @@ public class Metodos{
             dialog.setLocationRelativeTo(null);
             dialog.setVisible(true);
         });
+
+        botaoLogin.addActionListener(e -> {
+            Window janelaAtual = SwingUtilities.getWindowAncestor(botaoLogin);
+            if (janelaAtual != null) {
+                janelaAtual.dispose();
+            }
+
+            JFrame telaLogin = new JFrame();
+            telaLogin.setTitle("Bem-Vindo");
+            telaLogin.getContentPane().setBackground(Color.BLACK);
+            telaLogin.setSize(1000,1000);
+            telaLogin.setLocationRelativeTo(null);
+            telaLogin.setResizable(true);
+            telaLogin.setLayout(new BorderLayout());
+            telaLogin.setResizable(false);
+
+
+            JLabel tituloDoLogin = new JLabel("GASTEI");
+            tituloDoLogin.setForeground(Color.WHITE);
+            tituloDoLogin.setFont(new Font("Serif", Font.BOLD, 69));
+            tituloDoLogin.setHorizontalAlignment(SwingConstants.CENTER);
+
+            JPanel painelTituloLogin = new JPanel(new BorderLayout());
+            painelTituloLogin.setBackground(Color.black);
+            painelTituloLogin.setBorder(BorderFactory.createEmptyBorder(150,0,0,0));
+            painelTituloLogin.add(tituloDoLogin, BorderLayout.CENTER);
+
+            telaLogin.add(painelTituloLogin, BorderLayout.NORTH);
+
+            telaLogin.setVisible(true);
+        });
+
     }
 }
