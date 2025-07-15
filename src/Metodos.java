@@ -16,7 +16,11 @@ import javax.swing.JOptionPane;
 import javax.swing.SwingConstants;
 import javax.swing.SwingUtilities;
 import javax.swing.JPanel;
+import javax.swing.JTextField;
 import javax.swing.Timer;
+import javax.swing.text.BadLocationException;
+import javax.swing.text.PlainDocument;
+import javax.swing.text.AttributeSet;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.awt.Dimension;
@@ -192,6 +196,9 @@ public class Metodos{
             dialog.setVisible(true);
         });
 
+
+        //Ação ao clicar no botão Login
+
         botaoLogin.addActionListener(e -> {
             Window janelaAtual = SwingUtilities.getWindowAncestor(botaoLogin);
             if (janelaAtual != null) {
@@ -218,10 +225,43 @@ public class Metodos{
             painelTituloLogin.setBorder(BorderFactory.createEmptyBorder(150,0,0,0));
             painelTituloLogin.add(tituloDoLogin, BorderLayout.CENTER);
 
-            telaLogin.add(painelTituloLogin, BorderLayout.NORTH);
+            //----------------------------
 
+            JLabel rotuloEmail = new JLabel("Digite seu email");
+            rotuloEmail.setForeground(Color.WHITE);
+            rotuloEmail.setFont(new Font("Serif", Font.BOLD, 30));
+            rotuloEmail.setHorizontalAlignment(SwingConstants.CENTER);
+
+            JLabel rotuloSenha = new JLabel("Digite sua senha");
+            rotuloSenha.setForeground(Color.WHITE);
+            rotuloSenha.setFont(new Font("Serif", Font.BOLD, 30));
+            rotuloSenha.setHorizontalAlignment(SwingConstants.CENTER);
+
+            JTextField campoEmail = new JTextField();
+            campoEmail.setForeground(Color.WHITE);
+            campoEmail.setFont(new Font("Serif", Font.PLAIN, 20));
+            campoEmail.setHorizontalAlignment(SwingConstants.CENTER);
+            campoEmail.setBackground(Color.BLACK);
+
+            campoEmail.setDocument(new PlainDocument() {
+                @Override
+                public void insertString(int offs, String str, AttributeSet a) throws BadLocationException {
+                    if (str != null && (getLength() + str.length() <= 50)) {
+                        super.insertString(offs, str, a);
+                    }
+                }
+            });
+
+
+            telaLogin.add(painelTituloLogin, BorderLayout.NORTH);
             telaLogin.setVisible(true);
         });
+
+        JButton botaoEntrar = new JButton("Entrar");
+        botaoEntrar.setFont(new Font("Serif", Font.BOLD, 24));
+        botaoEntrar.setForeground(Color.WHITE);
+        botaoEntrar.setBackground(new Color(50, 50, 50));
+
 
     }
 }
