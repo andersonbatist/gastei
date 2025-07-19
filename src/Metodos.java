@@ -258,7 +258,7 @@ public class Metodos{
         });
 
         JButton botaoEntrar = new JButton("Entrar");
-        botaoEntrar.setFont(new Font("Serif", Font.BOLD, 30));
+        botaoEntrar.setFont(new Font("Serif", Font.BOLD, 60));
         botaoEntrar.setForeground(Color.WHITE);
         botaoEntrar.setBackground(new Color(50, 50, 50));
 
