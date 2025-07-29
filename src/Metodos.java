@@ -189,7 +189,7 @@ public class Metodos{
 
         botaoGoogle.addActionListener(e -> {
 
-            JOptionPane optionPane = new JOptionPane("Em breve ;)", JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane optionPane = new JOptionPane("Em breve :)", JOptionPane.INFORMATION_MESSAGE);
             JDialog dialog = optionPane.createDialog("Fazer login com o Google");
             dialog.setSize(300,150);
             dialog.setLocationRelativeTo(null);
